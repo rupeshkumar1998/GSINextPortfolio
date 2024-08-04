@@ -1,1 +1,2 @@
-# GSINextPortfolio
+# GSINext
+# Portfolio Project
