@@ -1,9 +1,9 @@
 import React from 'react'
+import Header from '../Components/Header'
 const Home = () => {
   return (
-    <h2 className="text-3xl font-bold underline">
-      Hame Page
-    </h2>
+   <Header/>
   )
 }
 export default Home
+
