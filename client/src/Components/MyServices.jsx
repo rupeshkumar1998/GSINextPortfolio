@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GoArrowUpRight } from "react-icons/go";
+import { MdArrowOutward } from "react-icons/md";
 
 const Services = ({ services = [] }) => {
   const [clickedService, setClickedService] = useState(null);
@@ -12,7 +12,7 @@ const Services = ({ services = [] }) => {
 
   return (
     <div className="text-white bg-[#050709] p-4 sm:px-10 md:px-20 lg:px-40">
-      <h1 className="text-3xl font-bold text-center py-5 bg-gradient-to-l from-[#8750F7] to-white bg-clip-text text-transparent">
+      <h1 className="text-3xl font-bold text-center py-5 bg-gradient-to-r from-[#8750F7] to-white bg-clip-text text-transparent">
         My Services
       </h1>
       <p className="text-center text-sm mb-10">
@@ -28,7 +28,7 @@ const Services = ({ services = [] }) => {
           >
             <div className="flex items-center gap-4">
               <h2 className={`font-bold ${clickedService === index ? 'text-white' : 'text-[#8750F7]'} group-hover:text-white`}>
-               0{index+1}
+                0{index+1}
               </h2>
               <h2 className={`text-xl font-bold ${clickedService === index ? 'text-white' : 'text-white'} group-hover:text-white`}>
                 {service}
@@ -37,7 +37,7 @@ const Services = ({ services = [] }) => {
             <a href="#" className={`text-xl font-bold mt-2 sm:mt-0 ${clickedService === index ? 'text-white' : 'text-white'} group-hover:text-white`}>
               {`About ${service}`}
             </a>
-            <GoArrowUpRight className={`w-6 h-6 transition-transform duration-300${clickedService === index ? 'transform rotate-0 text-white' : 'text-[#8750F7] transform rotate-90'} text-purple-700`} />
+            <MdArrowOutward className={`w-6 h-6 transition-transform rotate-90 duration-300 ${clickedService === index ? 'transform rotate-90 text-white' : 'text-[#8750F7]'} group-hover:rotate-0 group-hover:text-white`} />
           </div>
         ))}
       </div>
