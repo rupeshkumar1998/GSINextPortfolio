@@ -15,7 +15,6 @@ import Dummy from '../Components/Dummy';
 import Projects from '../Components/Projects';
 import Skill from '../Components/Skill';
 import Awards from '../Components/Awards';
-import MyService from '../Components/MyServices'; 
 import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
 const Home = () => {
@@ -24,7 +23,6 @@ const Home = () => {
     <Header/>
     <Awards/>
     <Projects/>
-    <MyService/>
     <Skill/>
     <Contact/>
     <Dummy/>
