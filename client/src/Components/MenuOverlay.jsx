@@ -1,56 +1,42 @@
-// // import React from 'react';
-// // import NavLink from './NavLink';
-
-// // const MenuOverlay = ({ links }) => {
-// //     return (
-// //         <ul className='flex flex-col py-4 items-center md:hidden'>
-// //             {links.map((link, index) => (
-// //                 <li key={index}>
-// //                     <NavLink href={link.path} title={link.title} />
-// //                 </li>
-// //             ))}
-// //         </ul>
-// //     );
-// // };
-
-// // export default MenuOverlay;
-
-
-// import React from 'react';
-
-// const MenuOverlay = ({ links }) => {
-//     return (
-//         // <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex flex-col items-center justify-center'>
-//         <div className='fixed top-20 left-0 w-screen h-screen bg-black bg-opacity-80 '>
-//             <ul className='space-y-3 left-10 flex flex-col '>
-//                 {links.map((link, index) => (
-//                     <li key={index}>
-//                         <a href={link.path} className='text-white text-sm hover:text-emerald-300'>
-//                             {link.title}
-//                         </a>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
-// };
-
-// export default MenuOverlay;
-
 import React from 'react';
+import '../App.css'; 
 
 const MenuOverlay = ({ links }) => {
     return (
-        <div className='fixed top-20 left-0 w-screen h-screen bg-black bg-opacity-80 md:hidden'>
-            <ul className='space-y-3 left-10 flex flex-col'>
-                {links.map((link, index) => (
-                    <li key={index}>
-                        <a href={link.path} className='text-white text-sm hover:text-emerald-300'>
-                            {link.title}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+        <div className='fixed top-20 left-0 h-auto  w-auto rounded-3xl bg-[#0F0715] bg-opacity-50 md:hidden flex justify-start z-50 '>
+            <div className='h-auto w-auto  bg-[#2D0F40] shadow-lg flex flex-col pt-10 rounded-r-3xl overflow-scroll no-scrollbar'>
+                <ul className='space-y-1   pl-3'>
+                    {links.map((link, index) => (
+                        <li key={index} className="relative group">
+
+                            {/* Overlay Bottom */}
+                            {/* <div className="overlayTop"></div> */}
+
+
+
+                            <a
+                                href={link.path}
+                                className='relative flex items-center p-3 '
+                            >
+
+                                {link.icon && (
+                                    <span className="text-white group-hover:text-white mr-3 z-10">
+                                        {link.icon}
+                                    </span>
+                                )}
+                                <span className='text-white group-hover:text-white font-medium z-10'>
+                                    {link.title}
+
+                                </span><span className="overlayBottom"/>
+                                <span className="overlayTop"/>
+
+                            </a>
+                            {/* Overlay Top */}
+                            {/* <div className="overlayBottom"></div> */}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };

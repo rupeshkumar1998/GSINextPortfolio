@@ -3,23 +3,26 @@ import NavLink from "./NavLink";
 import MenuOverlay from "./MenuOverlay";
 import AnimatedButton from "./AnimatedButton";
 import '../App.css';
+import { FaHome,FaUser,FaLaptopCode,FaTrophy,FaTools ,FaCommentDots,FaNewspaper,FaPhotoVideo,FaEnvelopeOpen} from "react-icons/fa";
+import { GoProjectTemplate } from "react-icons/go";
+// import Footer from './Footer';
 
 export const navLinks = [
-    { title: "Home", path: "#home" },
-    { title: "About", path: "#about" },
-    { title: "Projects", path: "#projects" },
-    { title: "Skill", path: "#skill" },
-    { title: "Services", path: "#services" },
-    { title: "Awards", path: "#awards" },
-    { title: "Testimonials", path: "#testimonials" },
-    { title: "News & Blogs", path: "#news&Blogs" },
-    { title: "Media & Publication", path: "#media&Publication" },
-    { title: "Contact", path: "#contact" }
+    { title: "Home", path: "#home",icon: <FaHome/> },
+    { title: "About", path: "#about" ,icon: <FaUser/>},
+    { title: "Projects", path: "#projects",icon: <GoProjectTemplate/> },
+    { title: "Skill", path: "#skill",icon: <FaLaptopCode/> },
+    { title: "Services", path: "#services", icon: <FaTools /> },
+    { title: "Awards", path: "#awards",icon: <FaTrophy/> },
+    { title: "Testimonials", path: "#testimonials",icon: <FaCommentDots/> },
+    { title: "News & Blogs", path: "#news&Blogs",icon: <FaNewspaper/> },
+    { title: "Media & Publication", path: "#media&Publication",icon: <FaPhotoVideo  /> },
+    { title: "Contact", path: "#contact",icon: <FaEnvelopeOpen /> }
 ];
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    // const [showNavbar, setShowNavbar] = useState(true);
+    // const [showNavbar, seShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [scrolled, setScrolled] = useState(false);
 
@@ -46,6 +49,7 @@ const Navbar = () => {
     };
 
     return (
+        
         <nav className={`fixed mx-auto top-0 left-0 right-0 z-10 transition-transform duration-500 ease-in-out transform ${scrolled ? 'translate-y-0 bounce' : '-translate-y-full'} ${scrolled ? 'bg-black bg-opacity-70' : 'bg-transparent'} backdrop-blur-lg shadow-custom-blur`}>
             <div className='flex flex-wrap items-center xl:justify-around mx-auto px-4 py-5'>
                 <a href={"/"} className='text-2xl md:text-5xl text-white font-semibold'>
@@ -71,8 +75,13 @@ const Navbar = () => {
                     <AnimatedButton />
                 </div>
             </div>
-            {navbarOpen && <MenuOverlay links={navLinks} />}
+            {navbarOpen && <MenuOverlay links={navLinks}/>}
+            {/* {navbarOpen ? <MenuOverlay links={navLinks}/>:null} */}
+
+            {/* footer wrok */}
+            
         </nav>
+       
     );
 };
 

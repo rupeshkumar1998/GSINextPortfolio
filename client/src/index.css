@@ -7,4 +7,17 @@ body{
     background-color:#0F0715;
 }
 
+.textlinearGradient {
+    background: linear-gradient(to right, #8641f6, #8641f6, #ffffff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.bglinearGradient {
+    background-image: linear-gradient(to right, #9564e4, #8747efe1, #7d38ecd0, #371175d7);
+}
 
+
+html {
+    scroll-behavior: smooth;
+  }

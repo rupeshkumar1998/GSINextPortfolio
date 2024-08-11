@@ -65,3 +65,202 @@
     transition: transform 0.5s, opacity 0.5s;
   }
   
+
+/* 
+.overlayBottom{
+    position: absolute;  
+    left: 0;  
+    top: 0; 
+    height: 100%; 
+    background-color: #4070F4;  
+    border-radius: 25px 0 0 25px;
+    }
+    
+.overlayBottom::before,
+.overlayBottom::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color: #4070F4;
+}
+
+.overlayBottom::after {
+    border-radius: 0 25px 0 0;
+    background-color: #FFF;
+}
+
+
+.overlayTop{
+  position: absolute;  
+  left: 0;  
+  top: 0; 
+  background-color: #f4408e;  
+  border-radius: 25px 0 0 25px;
+  }
+.overlayTop::before,
+.overlayTop::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #4070F4;
+}
+
+.overlayTop::after {
+    border-radius: 0 0 25px 0;
+    background-color: #FFF;
+} */
+
+
+
+/* overlayBottom style */
+.overlayBottom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  /* background-color: #4070F4; */
+  border-radius: 25px 0 0 25px;
+ 
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayBottom::before,
+.overlayBottom::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #0F0715;
+}
+
+.overlayBottom::after {
+  border-radius: 0 25px 0 0;
+  background-color: #2D0F40;
+}
+
+/* overlayTop style */
+.overlayTop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0F0715;
+  border-radius: 25px 0 0 25px;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayTop::before,
+.overlayTop::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 48px;
+  height: 40px;
+  width: 40px;
+  background-color: #0F0715;
+}
+
+.overlayTop::after {
+  border-radius: 0 0 25px 0;
+  background-color: #2D0F40;
+}
+
+/* Show overlays on hover */
+/* .group:hover .overlayTop,
+.group:hover .overlayBottom {
+  opacity: 1;
+  
+} */
+
+.group:hover .overlayTop,
+.group:hover .overlayBottom {
+  opacity: 1;
+  
+}
+
+
+
+
+/* OverlayStyles.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+
+
+
+
+
+
+/* 
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+.animate-slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.5s forwards;
+} */

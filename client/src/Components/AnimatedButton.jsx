@@ -1,21 +1,6 @@
-import React, { useState, useRef } from 'react';
-// import { FaGithub, FaFacebook, FaTwitter, FaYoutube, FaTiktok, FaWordpress, FaInstagram, FaDocker } from 'react-icons/fa';
-import { FaHome } from "react-icons/fa";
-import '../App.css';
+import React, { useState, useRef } from 'react'
+import { navLinks } from './Navbar';
 
-const icons = [
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-  { icon: <FaHome />, link: "#" },
-];
 
 const AnimatedButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,12 +42,12 @@ const AnimatedButton = () => {
     <>
       <button
         onClick={toggleOpen}
-        className="flex items-center justify-center w-16 h-16 bg-white rounded-full focus:outline-none "
+        className="flex items-center justify-center w-16 h-10 bg-white rounded-full focus:outline-none "
       >
         <div className={`hamburger ${isOpen ? 'open' : ''}`}>
-          <span className="block w-8 h-1 bg-orange-500 mb-1 transition-transform duration-500"></span>
-          <span className="block w-8 h-1 bg-orange-500 mb-1 transition-transform duration-500"></span>
-          <span className="block w-8 h-1 bg-orange-500 transition-transform duration-500"></span>
+          <span className="block w-6 h-1 bg-purple-800 mb-1 transition-transform duration-500"></span>
+          <span className="block w-6 h-1 bg-purple-800 mb-1 transition-transform duration-500"></span>
+          <span className="block w-6 h-1 bg-purple-800 transition-transform duration-500"></span>
         </div>
       </button>
 
@@ -75,22 +60,22 @@ const AnimatedButton = () => {
             style={{ transform: `rotate(${rotation}deg)` }}
             onMouseDown={handleMouseDown}
           >
-            {icons.map((item, index) => {
-              const angle = (index / icons.length) * (2 * Math.PI);
+            {navLinks.map((item, index) => {
+              const angle = (index / navLinks.length) * (2 * Math.PI);
               const x = Math.cos(angle) * 100;
               const y = Math.sin(angle) * 100;
 
               return (
                 <a
                   key={index}
-                  href={item.link}
+                  href={item.path}
                   className={`absolute flex items-center justify-center w-12 h-12 bg-white rounded-full transition-transform duration-500 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                   style={{
                     transform: `translate(${x}px, ${y}px)`,
                     transitionDelay: `${isOpen ? index * 50 : 0}ms`,
                   }}
                 >
-                  <span className="text-orange-500 text-xl">{item.icon}</span>
+                  <span className="text-purple-600 text-xl">{item.icon}</span>
                 </a>
               );
             })}
