@@ -17,6 +17,7 @@ import Skill from '../Components/Skill';
 import Awards from '../Components/Awards';
 import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
+import MyServices from "../Components/MyServices"
 const Home = () => {
   return (
     <>
@@ -24,6 +25,7 @@ const Home = () => {
     <Awards/>
     <Projects/>
     <Skill/>
+    <MyServices/>
     <Contact/>
     <Dummy/>
     <Footer/>
