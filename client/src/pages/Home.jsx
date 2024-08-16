@@ -19,6 +19,8 @@ import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
 import MyServices from "../Components/MyServices"
 import ScrollProgress from '../Components/ScrollProgress';
+import Testimonials from '../Components/Testimonials';
+import AwardRecognition from '../Components/AwardRecognition';
 const Home = () => {
   return (
     <>
@@ -26,8 +28,10 @@ const Home = () => {
     <Awards/>
     <Projects/>
     <Skill/>
+    <AwardRecognition/>
     <MyServices/>
     <Contact/>
+    <Testimonials/>
     <Dummy/>
     <Footer/>
     <ScrollProgress/>
