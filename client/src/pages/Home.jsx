@@ -18,6 +18,7 @@ import Awards from '../Components/Awards';
 import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
 import MyServices from "../Components/MyServices"
+import ScrollProgress from '../Components/ScrollProgress';
 const Home = () => {
   return (
     <>
@@ -29,6 +30,7 @@ const Home = () => {
     <Contact/>
     <Dummy/>
     <Footer/>
+    <ScrollProgress/>
     </>
   )
 }
