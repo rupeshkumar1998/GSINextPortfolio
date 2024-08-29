@@ -26,7 +26,7 @@ const Home = () => {
     <Awards/>
     <Projects/>
     <Skill/>
-    <MyServices/>
+    <MyServices />
     <Contact/>
     <Dummy/>
     <Footer/>

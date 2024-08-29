@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PreLoader from './Components/PreLoader';
+import Blogs from './Components/Blog';
+import AllService from './pages/AllService';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -18,14 +21,10 @@ export default function App() {
 
   return (
     <Router>
-      <Home />
       <Routes>
-        {/* <Route path="/projects" element={<Projects />} /> 
-        <Route path="/skills" element={<Skill />} /> 
-        <Route path="/awards" element={<Awards />} />
-        <Route path="/services" element={<MyService />} /> 
-         all page have to added here for rander */}
-      </Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/allservices" element={<AllService />} />
+    </Routes>
     </Router>
   );
 }
