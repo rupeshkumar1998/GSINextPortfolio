@@ -141,7 +141,10 @@ const ServiceData = [
 
 const Testimonials = () => {
     return (
-        <div className="flex items-center justify-center flex-col h-[600px] bg-[#2D0F40]" id="testimonials">
+        <div className="p-20 flex items-center justify-center flex-col h-[600px] " id="testimonials"
+        
+        data-aos="fade-right"
+        data-aos-duration="1000">
 
             {/* Testimonials heaader section */}
             <div className="w-3/4 mb-5">
@@ -179,7 +182,11 @@ const Testimonials = () => {
                 {ServiceData.map((item) => (
                     <SwiperSlide key={item.name}>
                         {/* Individual testimonial slide */}
-                        <div className="bg-[#50097d] relative m-2 flex flex-col gap-6 mb-20 group shadow-lg text-white rounded-xl px-3 py-2 h-[320px] overflow-hidden cursor-pointer">
+                        <div className="bg-[#50097d] relative m-2 flex flex-col gap-6 mb-20 group shadow-lg text-white rounded-xl px-3 py-2 h-[320px] overflow-hidden cursor-pointer"
+
+
+                            data-aos="flip-right"
+                            data-aos-duration="1000">
                             {/* Decorative background effect */}
                             <div className="absolute top-0 right-0 mt-0 flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] bg-[#ad5cdf] to-transparent rounded-full h-72 w-72 blur-3xl transform -translate-y-1/2 translate-x-1/2 rounded-bl-full group-hover:bg-[#9903f7]" />
                             {/* Overlay to darken background */}

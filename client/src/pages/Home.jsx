@@ -24,14 +24,14 @@ import AwardRecognition from '../Components/AwardRecognition';
 const Home = () => {
   return (
     <>
-    <Header/>
-    <Awards/>
-    <Projects/>
-    <Skill/>
+    {/* <Header/> */}
+    {/* <Awards/> */}
+    {/* <Projects/> */}
+    {/* <Skill/> */}
     <AwardRecognition/>
     <MyServices/>
-    <Contact/>
     <Testimonials/>
+    <Contact/>
     <Dummy/>
     <Footer/>
     <ScrollProgress/>

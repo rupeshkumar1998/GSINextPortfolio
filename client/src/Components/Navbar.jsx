@@ -8,16 +8,16 @@ import { GoProjectTemplate } from "react-icons/go";
 // import Footer from './Footer';
 
 export const navLinks = [
-    { title: "Home", path: "#home",icon: <FaHome/> },
-    { title: "About", path: "#about" ,icon: <FaUser/>},
-    { title: "Projects", path: "#projects",icon: <GoProjectTemplate/> },
-    { title: "Skill", path: "#skill",icon: <FaLaptopCode/> },
-    { title: "Services", path: "#services", icon: <FaTools /> },
-    { title: "Awards", path: "#awards",icon: <FaTrophy/> },
-    { title: "Testimonials", path: "#testimonials",icon: <FaCommentDots/> },
-    { title: "News & Blogs", path: "#news&Blogs",icon: <FaNewspaper/> },
-    { title: "Media & Publication", path: "#media&Publication",icon: <FaPhotoVideo  /> },
-    { title: "Contact", path: "#contact",icon: <FaEnvelopeOpen /> }
+    { title: "Home", path: "/#home",icon: <FaHome/> },
+    { title: "About", path: "/about" ,icon: <FaUser/>},
+    // { title: "Projects", path: "/#projects",icon: <GoProjectTemplate/> },
+    // { title: "Skill", path: "/#skill",icon: <FaLaptopCode/> },
+    { title: "Services", path: "/#services", icon: <FaTools /> },
+    { title: "Award & Recognition", path: "/#awardRecognition",icon: <FaTrophy/> },
+    { title: "Testimonials", path: "/#testimonials",icon: <FaCommentDots/> },
+    { title: "News & Blogs", path: "/#news&Blogs",icon: <FaNewspaper/> },
+    { title: "Media & Publication", path: "/#media&Publication",icon: <FaPhotoVideo  /> },
+    { title: "Contact", path: "/#contact",icon: <FaEnvelopeOpen /> }
 ];
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
-        if (window.scrollY > 400) {
+        if (window.scrollY > 100) {
             setScrolled(true);
         } else {
             setScrolled(false);
@@ -52,9 +52,12 @@ const Navbar = () => {
         
         <nav className={`fixed mx-auto top-0 left-0 right-0 z-10 transition-transform duration-500 ease-in-out transform ${scrolled ? 'translate-y-0 bounce' : '-translate-y-full'} ${scrolled ? 'bg-black bg-opacity-70' : 'bg-transparent'} backdrop-blur-lg shadow-custom-blur`}>
             <div className='flex flex-wrap items-center xl:justify-around mx-auto px-4 py-5'>
-                <a href={"/"} className='text-2xl md:text-5xl text-white font-semibold'>
-                    R
+                <div className=''>
+                <a href={"/"} className='text-2xl md:text-4xl  text-white font-bold'>
+                    GSI
                 </a>
+                </div>
+                
                 <div className='absolute right-0 px-3 py-2 block md:hidden'>
                     <button onClick={handleClick} className="flex flex-col justify-center items-center">
                         <span className={`bg-white block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${navbarOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'}`} ></span>
