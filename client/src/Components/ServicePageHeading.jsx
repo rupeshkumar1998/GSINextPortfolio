@@ -11,4 +11,8 @@ const ServicePageHeading = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ServicePageHeading;
+=======
+export default ServicePageHeading;
+>>>>>>> 035dfb9f8d5a3a07138544b1b1a60ae956f5c9cb

@@ -158,4 +158,8 @@ const Services = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Services;
+=======
+export default Services;
+>>>>>>> 035dfb9f8d5a3a07138544b1b1a60ae956f5c9cb
