@@ -31,6 +31,11 @@ const Home = () => {
     <AwardRecognition/>
     <MyServices/>
     <Testimonials/>
+    <Header/>
+    <Awards/>
+    <Projects/>
+    <Skill/>
+    <MyServices />
     <Contact/>
     <Dummy/>
     <Footer/>
