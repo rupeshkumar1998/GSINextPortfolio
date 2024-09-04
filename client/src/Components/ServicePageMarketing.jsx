@@ -73,8 +73,4 @@ function ServicePageMarketing() {
   );
 }
 
-<<<<<<< HEAD
 export default ServicePageMarketing;
-=======
-export default ServicePageMarketing;
->>>>>>> 035dfb9f8d5a3a07138544b1b1a60ae956f5c9cb
