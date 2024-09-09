@@ -1,8 +1,16 @@
 import React from 'react'
+import Profiler from './Profiler'
+
+import MediaplusPublication from './MediaplusPublication'
+
 
 const Awards = () => {
   return (
-    <div id='awards' className="flex items-center justify-center h-screen bg-slate-500 text-2xl text-orange-500">Awards</div>
+    <>
+    <Profiler />
+    <MediaplusPublication />
+
+    </>
   )
 }
 
