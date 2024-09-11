@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import { useNavigate } from 'react-router-dom'; // Use this only if using React Router
+import { FaSearch, FaBackwardStep } from "react-icons/fa6"; // Import FaSearch
 import list from "../../Public/List.json";
 import Cards from './Cards';
 import { ShootingStars } from '../ui/shooting-stars';
 import { StarsBackground } from '../ui/stars-background';
-import { FaBackwardStep } from "react-icons/fa6";
 
 const MndP = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("newest"); // State to handle sorting
+  const [showSearch, setShowSearch] = useState(false);  // State to manage search popup for small screens
   const navigate = useNavigate(); // Use this only if using React Router
 
   const handleReadMore = (item) => {
@@ -20,6 +21,10 @@ const MndP = () => {
 
   const handleClose = () => {
     setSelectedItem(null);
+  };
+
+  const handleBack = () => {
+    navigate('/');
   };
 
   // Sorting logic for older to newest or newest to older
@@ -53,12 +58,6 @@ const MndP = () => {
     };
   }, [selectedItem]);
 
-  // Function to handle "Back" button click
-  const handleBack = () => {
-    navigate('/'); // If using React Router
-    // window.location.href = "/"; // Uncomment if not using React Router and want to use plain navigation
-  };
-
   return (
     <div className='h-[600px] rounded-md bg-neutral-900 items-center justify-center relative w-full'>
       <div>
@@ -75,14 +74,14 @@ const MndP = () => {
             <div className="relative mr-4">
               <button
                 onClick={handleBack}
-                className=" text-white px-4 py-2 rounded-full shadow-lg"
+                className="text-white px-4 py-2 rounded-full shadow-lg"
               >
                 <FaBackwardStep />
               </button>
             </div>
 
-            {/* Search Bar */}
-            <div className="relative w-full max-w-lg left-12">
+            {/* Search Bar (visible only on medium screens and up) */}
+            <div className="hidden md:block relative w-full max-w-lg left-12">
               <label className="flex items-center bg-white rounded-full shadow-lg px-4 py-2">
                 <IoIosSearch className="text-xl text-gray-500" />
                 <input 
@@ -95,6 +94,13 @@ const MndP = () => {
                 <kbd className="kbd kbd-sm ml-2">⌘</kbd>
                 <kbd className="kbd kbd-sm">K</kbd>
               </label>
+            </div>
+
+            {/* FaSearch icon for small screens */}
+            <div className="md:hidden relative">
+              <button onClick={() => setShowSearch(true)} className="text-white text-2xl">
+                <FaSearch />
+              </button>
             </div>
 
             {/* Dropdown for Sorting */}
@@ -111,6 +117,35 @@ const MndP = () => {
               </select>
             </div>
           </div>
+
+          {/* Search Popup for small screens */}
+          {showSearch && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-75">
+              <div className="bg-white p-4 rounded-lg shadow-lg w-full max-w-lg">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-lg font-semibold">Search</h2>
+                  <button
+                    onClick={() => setShowSearch(false)}
+                    className="text-xl"
+                  >
+                    ✖
+                  </button>
+                </div>
+                <div className="relative w-full">
+                  <label className="flex items-center bg-gray-200 rounded-full px-4 py-2">
+                    <IoIosSearch className="text-xl text-gray-500" />
+                    <input 
+                      type="text" 
+                      className="grow outline-none px-3 text-gray-700 bg-transparent" 
+                      placeholder="Search..." 
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Cards Container with Flexbox and Scroll */}
           <div className='max-w-screen-2xl container mx-auto md:px-1 px-4'>
@@ -129,33 +164,31 @@ const MndP = () => {
             className="fixed inset-0 flex items-center justify-center z-50"
             style={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
           >
-            <div className="bg-slate-900 text-white p-6 w-2/3 md:w-1/2 lg:w-5/6 max-h-[80vh] overflow-y-auto shadow-lg h-5/6 relative">
-              <button className="absolute top-4 right-4 text-white" onClick={handleClose}>
+            <div className="bg-slate-900 text-white p-6 w-full sm:w-5/6 md:w-2/3  max-h-[90vh] overflow-y-auto shadow-lg relative rounded-lg">
+              <button className="absolute top-4 right-4 text-white text-2xl" onClick={handleClose}>
                 <MdOutlineCloseFullscreen />
               </button>
 
-              <div className="flex gap-8 pb-6 pt-4 h-full w-full">
+              <div className="flex flex-col sm:flex-row gap-6 pb-6 pt-4 h-full w-full">
                 {/* Left Side */}
-                <div className="w-[360px] h-full sticky top-0">
-                  <div>
-                    <figure className="relative w-[360px] h-60 overflow-hidden">
-                      <img
-                        src={selectedItem.Pic}
-                        alt={selectedItem.Title}
-                        className="w-full h-full object-fill object-center"
-                      />
-                    </figure>
+                <div className="w-full sm:w-1/3 flex-shrink-0">
+                  <div className="relative w-full h-60 overflow-hidden">
+                    <img
+                      src={selectedItem.Pic}
+                      alt={selectedItem.Title}
+                      className="w-full h-full object-cover rounded-md"
+                    />
                   </div>
-                  <div className="p-7">
-                    <h2 className="text-5xl font-bold mb-4 text-center">{selectedItem.Name}</h2>
-                    <p className="text-center text-yellow-200 font-medium text-2xl">{selectedItem.Date}</p>
+                  <div className="pt-5 text-center">
+                    <h2 className="text-3xl font-bold mb-2">{selectedItem.Name}</h2>
+                    <p className="text-yellow-200 font-medium text-lg">{selectedItem.Date}</p>
                   </div>
                 </div>
 
                 {/* Right Side with Scroll */}
-                <div className="w-[580px] h-auto overflow-y-auto pr-4">
-                  <h1 className="text-5xl font-semibold text-center">{selectedItem.Title}</h1>
-                  <p className="pt-6 text-xl px-8">{selectedItem.Summary}</p>
+                <div className="w-full sm:w-2/3 overflow-y-auto no-scrollbar pr-4">
+                  <h1 className="text-4xl font-semibold text-center mb-6">{selectedItem.Title}</h1>
+                  <p className="text-lg px-4 sm:px-0">{selectedItem.Summary}</p>
                 </div>
               </div>
             </div>
