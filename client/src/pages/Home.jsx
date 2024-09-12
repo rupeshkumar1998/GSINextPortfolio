@@ -32,12 +32,12 @@ const Home = () => {
     <MyServices/>
     <Testimonials/>
     <Header/>
-    <Awards/>
-    <Projects/>
-    <Skill/>
-    <MyServices />
+    {/* <Awards/> */}
+    {/* <Projects/> */}
+    {/* <Skill/> */}
+    {/* <MyServices /> */}
     <Contact/>
-    <Dummy/>
+    {/* <Dummy/> */}
     <Footer/>
     <ScrollProgress/>
     </>
