@@ -21,6 +21,7 @@ import MyServices from "../Components/MyServices"
 import ScrollProgress from '../Components/ScrollProgress';
 import Testimonials from '../Components/Testimonials';
 import AwardRecognition from '../Components/AwardRecognition';
+import Blog from '../Components/Blog';
 const Home = () => {
   return (
     <>
@@ -36,8 +37,10 @@ const Home = () => {
     {/* <Projects/> */}
     {/* <Skill/> */}
     {/* <MyServices /> */}
+    <Blog/>
     <Contact/>
     {/* <Dummy/> */}
+    
     <Footer/>
     <ScrollProgress/>
     </>

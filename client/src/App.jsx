@@ -12,9 +12,18 @@ import AllServicePage from './pages/AllServicePage'
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import Blogs from './Components/Blog';
+// import Blogs from './Components/Blog';
 // import AllService from './pages/AllService';
 
+// import Blog from './Components/Blog';
+// import AllService from './pages/AllService';
+// // import BlogBanner from './Components/BlogBanner';
+// import BlogBlogger from './Components/BlogBloger';
+// import BlogLeaveReply from './Components/BlogLeaveReply';
+// import RecentPosts from './Components/RecentPosts';
+// import BlogRecentPosts from './Components/BlogRecentPosts';
+// import BlogPopularTags from './Components/BlogPopularTags';
+import Blogs from './pages/Blogs';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -42,7 +51,7 @@ Aos.init();
       <Route path="/awards" element={<AwardRecognitionPage />} />
 
       <Route path="/allServices" element={<AllServicePage/>} />
-
+      <Route path="/news&Blogs" element={<Blogs/>} />
         {/* <Route path="/projects" element={<Projects />} /> 
         <Route path="/skills" element={<Skill />} /> 
         <Route path="/awards" element={<Awards />} />
