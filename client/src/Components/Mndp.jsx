@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
+import {  FaBackwardStep } from "react-icons/fa6"; // Import FaSearch
 import { useNavigate } from 'react-router-dom'; // Use this only if using React Router
-import { FaSearch, FaBackwardStep } from "react-icons/fa6"; // Import FaSearch
 import list from "../../Public/List.json";
 import Cards from './Cards';
 import { ShootingStars } from '../ui/shooting-stars';
@@ -59,7 +59,7 @@ const MndP = () => {
   }, [selectedItem]);
 
   return (
-    <div className='h-[600px] rounded-md bg-neutral-900 items-center justify-center relative w-full'>
+    <div className='h-screen rounded-md bg-neutral-900 items-center justify-center relative w-full'>
       <div>
         <ShootingStars />
         <StarsBackground />
@@ -81,7 +81,7 @@ const MndP = () => {
             </div>
 
             {/* Search Bar (visible only on medium screens and up) */}
-            <div className="hidden md:block relative w-full max-w-lg left-12">
+            <div className="hidden md:block relative w-80 max-w-lg left-12">
               <label className="flex items-center bg-white rounded-full shadow-lg px-4 py-2">
                 <IoIosSearch className="text-xl text-gray-500" />
                 <input 
@@ -98,8 +98,8 @@ const MndP = () => {
 
             {/* FaSearch icon for small screens */}
             <div className="md:hidden relative">
-              <button onClick={() => setShowSearch(true)} className="text-white text-2xl">
-                <FaSearch />
+              <button onClick={() => setShowSearch(true)} className="text-white border-spacing-96 border-fuchsia-100 text-2xl">
+              <IoIosSearch />
               </button>
             </div>
 
