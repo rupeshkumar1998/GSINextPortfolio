@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 const BlogDescription = () => {
   return (
-    <div className="pl-1 pr-4 pt-2 pb-6 font-sans  mx-auto">
+    <div className="pl-1 pr-4 pt-2 bg-black pb-6 font-sans  mx-auto">
       <h1 className="text-4xl font-bold text-white mb-4">Main Heading</h1>
       <p className="text-base text-white mb-6">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam tenetur beatae ipsam cum fugit harum ex molestiae ullam enim! Animi quibusdam amet dolores? Omnis labore eveniet incidunt atque fugiat optio voluptatem. Consectetur iste impedit quae dolorum repellendus numquam provident cupiditate fugit temporibus dicta deleniti consequatur, sequi in! Illum repellat earum quaerat modi alias iusto, tempora facere officia dolorem adipisci tempore, veniam rem minima pariatur rerum distinctio eveniet dolore labore harum similique numquam. Ab officiis incidunt provident iure, aut recusandae repellendus molestias sed voluptatem nemo deleniti magni, rerum facilis. Nemo labore nam beatae cumque at fugiat nisi alias quasi voluptates assumenda!

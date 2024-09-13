@@ -4,7 +4,7 @@ import BlogDescription from './BlogDescription';
 
 const BlogBloger = ({ imageUrl, authorName, blogDate, buttonText }) => {
   return (
-    <div className="relative inline-block p-4 bg-[#050709] rounded-lg shadow-lg">
+    <div className="relative inline-block p-4 bg-black rounded-lg shadow-lg">
       {/* Image with Button */}
       <div className="relative">
         <img
