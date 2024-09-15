@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PreLoader from './Components/PreLoader';
-
 import Header from './Components/Header';
 import AboutPage from './pages/AboutPage';
-import HashManager from "./Components/HashManager"
+import HashManager from './Components/HashManager';
 import AwardRecognitionPage from './pages/AwardRecognitionPage';
-import AllService from './pages/AllService'
-import Aos from "aos";
-import "aos/dist/aos.css";
-
-import Blogs from './pages/Blogs';
-// import AllService from './pages/AllService';
-
+import AllService from './pages/AllService';
+import AboutBlog from './pages/Blogs';  // Import AboutBlog page
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -22,9 +17,9 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000); 
+    }, 3000);
 
-Aos.init();
+    Aos.init();
   }, []);
 
   if (loading) {
@@ -32,30 +27,28 @@ Aos.init();
   }
 
   return (
-    <Blogs/>
-    // <Router>
-    //   <HashManager/>
-    //   <Header/>
-    //   {/* <Home /> */}
-    //   <Routes>
-    //   <Route path="/" element={<Home/>} />
-    //   <Route path="/about" element={<AboutPage/>} />
-    //   <Route path="/awards" element={<AwardRecognitionPage />} />
+    <Router>
+      <HashManager />
+      <Header />
+      <Routes>
+        {/* Home Route */}
+        <Route path="/" element={<Home />} />
+        
+        {/* About Page Route */}
+        <Route path="/about" element={<AboutPage />} />
 
-    //   <Route path="/allServices" element={<AllService/>} />
+        {/* Award Recognition Page Route */}
+        <Route path="/awards" element={<AwardRecognitionPage />} />
 
-    //     {/* <Route path="/projects" element={<Projects />} /> 
-    //     <Route path="/skills" element={<Skill />} /> 
-    //     <Route path="/awards" element={<Awards />} />
-    //     <Route path="/services" element={<MyService />} /> 
-    //      all page have to added here for rander */}
-    //   </Routes>
-    //   {/* <Routes>
-    //   <Route path="/" element={<Home />} />
-    //   <Route path="/allservices" element={<AllService />} />
-    // </Routes> */}
-     
-    //  {/* <Route path="/pages/Blogs/" element={<BlogDetails />} /> */}
-    // </Router>
+        {/* All Services Route */}
+        <Route path="/allServices" element={<AllService />} />
+
+
+        {/* About Blog Route */}
+        <Route path="/aboutblog" element={<AboutBlog />} />
+
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
   );
 }

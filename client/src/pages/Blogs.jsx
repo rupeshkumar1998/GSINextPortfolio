@@ -1,17 +1,12 @@
 import React, { useEffect } from "react";
-import ServicePageHeading from "../Components/ServicePageHeading";
-import ServicePageMarketing from "../Components/ServicePageMarketing";
-import ServicePageMoreServices from "../Components/ServicePageMoreServices";
-import ServicePageMessenger from "../Components/ServicePageMessenger";
-import ServicePageAbout from "../Components/ServicePageAbout";
 import BlogBanner from "../Components/BlogBanner";
-import BlogDescription from "../Components/BlogDescription";
 import BlogBloger from "../Components/BlogBloger";
 import BlogLeaveReply from "../Components/BlogLeaveReply";
 import BlogRecentPosts from "../Components/BlogRecentPosts";
 import BlogPopularTags from "../Components/BlogPopularTags";
 
-const Blogs = () => {
+const AboutBlog = () => {
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -53,8 +48,12 @@ const Blogs = () => {
               id="marketing"
               className="opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
             >
-              <BlogBloger imageUrl="https://gerold.themejunction.net/wp-content/uploads/2024/05/blog-4-1536x597.jpg"
-    buttonText="SAAS" blogDate="September 2, 2024" authorName="John Doe"/>
+              <BlogBloger 
+                imageUrl="https://gerold.themejunction.net/wp-content/uploads/2024/05/blog-4-1536x597.jpg"
+                buttonText="SAAS"
+                blogDate="September 2, 2024"
+                authorName="John Doe"
+              />
             </div>
             <div
               id="about"
@@ -85,4 +84,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default AboutBlog;
