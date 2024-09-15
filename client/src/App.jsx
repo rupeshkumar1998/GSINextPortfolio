@@ -12,7 +12,7 @@ import AllService from './pages/AllService'
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-import Blogs from './Components/Blog';
+import Blogs from './pages/Blogs';
 // import AllService from './pages/AllService';
 
 
@@ -32,29 +32,30 @@ Aos.init();
   }
 
   return (
-    <Router>
-      <HashManager/>
-      <Header/>
-      {/* <Home /> */}
-      <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/about" element={<AboutPage/>} />
-      <Route path="/awards" element={<AwardRecognitionPage />} />
+    <Blogs/>
+    // <Router>
+    //   <HashManager/>
+    //   <Header/>
+    //   {/* <Home /> */}
+    //   <Routes>
+    //   <Route path="/" element={<Home/>} />
+    //   <Route path="/about" element={<AboutPage/>} />
+    //   <Route path="/awards" element={<AwardRecognitionPage />} />
 
-      <Route path="/allServices" element={<AllService/>} />
+    //   <Route path="/allServices" element={<AllService/>} />
 
-        {/* <Route path="/projects" element={<Projects />} /> 
-        <Route path="/skills" element={<Skill />} /> 
-        <Route path="/awards" element={<Awards />} />
-        <Route path="/services" element={<MyService />} /> 
-         all page have to added here for rander */}
-      </Routes>
-      {/* <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/allservices" element={<AllService />} />
-    </Routes> */}
-     {/* <Route path="/" element={<Blogs />} /> */}
-     {/* <Route path="/pages/Blogs/" element={<BlogDetails />} /> */}
-    </Router>
+    //     {/* <Route path="/projects" element={<Projects />} /> 
+    //     <Route path="/skills" element={<Skill />} /> 
+    //     <Route path="/awards" element={<Awards />} />
+    //     <Route path="/services" element={<MyService />} /> 
+    //      all page have to added here for rander */}
+    //   </Routes>
+    //   {/* <Routes>
+    //   <Route path="/" element={<Home />} />
+    //   <Route path="/allservices" element={<AllService />} />
+    // </Routes> */}
+     
+    //  {/* <Route path="/pages/Blogs/" element={<BlogDetails />} /> */}
+    // </Router>
   );
 }

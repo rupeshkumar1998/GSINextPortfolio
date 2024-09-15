@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ServicePageMarketing({ serviceId }) {
   const [serviceData, setServiceData] = useState({ businessParagraph: '' });
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchServiceData = async () => {
@@ -27,6 +29,10 @@ function ServicePageMarketing({ serviceId }) {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const handleContactUsClick = () => {
+    navigate('/#contact'); // Navigate to the home page
+  };
 
   return (
     <div className="text-white flex justify-center items-center ">
@@ -54,7 +60,7 @@ function ServicePageMarketing({ serviceId }) {
               <p className="text-lg mb-6">
                 {serviceData.businessParagraph || 'Loading business description...'}
               </p>
-              <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+              <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onClick={handleContactUsClick}>
                 Contact Us
               </button>
             </div>

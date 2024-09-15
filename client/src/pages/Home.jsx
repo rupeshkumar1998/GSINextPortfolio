@@ -33,11 +33,7 @@ const Home = () => {
     <MyServices/>
     <Testimonials/>
     <Blogs/>
-    <Header/>
-    <Awards/>
-    <Projects/>
 
-    <Skill/>
     <Contact/>
     <Footer/>
     <ScrollProgress/>
