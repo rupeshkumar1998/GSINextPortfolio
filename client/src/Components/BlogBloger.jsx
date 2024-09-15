@@ -1,35 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser, FaCalendarAlt, FaComments } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import BlogDescription from './BlogDescription';
+import { useLocation } from 'react-router-dom'; // To get blogId from URL
 
-const BlogBloger = ({ imageUrl, authorName, blogDate, buttonText }) => {
+const BlogBloger = ({ buttonText }) => {
   const [showModal, setShowModal] = useState(false);
-  const [comments, setComments] = useState([
-    { text: 'This is a great post!', date: 'September 10, 2024' },
-    { text: 'Really insightful, thanks for sharing!', date: 'September 11, 2024' },
-    { text: 'Loved the blog, keep it up!', date: 'September 12, 2024' },
-  ]);
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
+  const [blogData, setBlogData] = useState(null);
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const blogId = queryParams.get("id");
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Intl.DateTimeFormat('en-US', options).format(new Date(dateString));
+  };
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/blogs/${blogId}`); // Replace with your API endpoint
+        if (!response.ok) {
+          throw new Error('Failed to fetch blog data');
+        }
+        const data = await response.json();
+        setBlogData(data);
+        setComments(data.comments || []); // Assuming comments are part of the blog data
+      } catch (err) {
+        console.error('Failed to fetch blog data', err);
+      }
+    };
+
+    if (blogId) {
+      fetchBlogData();
+    }
+  }, [blogId]);
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (newComment) {
-      const currentDate = new Date().toLocaleDateString('en-US', {
+      const currentDate = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      });
+      }).format(new Date());
       setComments([...comments, { text: newComment, date: currentDate }]);
       setNewComment('');
     }
   };
 
+  if (!blogData) return <p>Loading...</p>;
+
   return (
     <div className="relative inline-block p-4 bg-black rounded-lg shadow-lg">
       {/* Image with Button */}
       <div className="relative">
-        <img src={imageUrl} alt="Blog" className="rounded-lg w-full h-auto" />
+        <img src={blogData.blogImage} alt="Blogger" className="rounded-lg w-full h-auto" />
         <button
           className="absolute top-2 right-2 bg-purple-500 text-white px-4 py-2 rounded-full text-sm"
           style={{ whiteSpace: 'nowrap' }}
@@ -43,13 +72,13 @@ const BlogBloger = ({ imageUrl, authorName, blogDate, buttonText }) => {
         {/* Author */}
         <div className="flex items-center space-x-2 hover:text-purple-400">
           <FaUser />
-          <span>{authorName}</span>
+          <span>{blogData.bloggerName}</span>
         </div>
 
         {/* Date */}
         <div className="flex items-center space-x-2 hover:text-purple-400">
           <FaCalendarAlt />
-          <span>{blogDate}</span>
+          <span>{formatDate(blogData.blogDate)}</span>
         </div>
 
         {/* Comments Button */}
@@ -63,12 +92,10 @@ const BlogBloger = ({ imageUrl, authorName, blogDate, buttonText }) => {
       </div>
 
       <p className="text-white pb-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quo
-        alias harum adipisci mollitia at reiciendis et autem sit est quis
-        dolores qui, accusantium ipsa eius...
+        {blogData.aboutBlogger}
       </p>
       <hr className="border-t border-purple-500 my-4" />
-      <BlogDescription />
+      <BlogDescription blogId={blogId} />
 
       {/* Comment Modal */}
       {showModal && (
@@ -96,7 +123,7 @@ const BlogBloger = ({ imageUrl, authorName, blogDate, buttonText }) => {
                     className="bg-gray-900 text-white p-2 rounded mb-2"
                   >
                     <p>{comment.text}</p>
-                    <p className="text-xs text-gray-400">{comment.date}</p>
+                    <p className="text-xs text-gray-400">{formatDate(comment.date)}</p>
                   </div>
                 ))
               ) : (

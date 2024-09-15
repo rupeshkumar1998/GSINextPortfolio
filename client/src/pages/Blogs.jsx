@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom"; // Import useLocation to get the id from URL
 import BlogBanner from "../Components/BlogBanner";
 import BlogBloger from "../Components/BlogBloger";
 import BlogLeaveReply from "../Components/BlogLeaveReply";
@@ -6,7 +7,10 @@ import BlogRecentPosts from "../Components/BlogRecentPosts";
 import BlogPopularTags from "../Components/BlogPopularTags";
 
 const AboutBlog = () => {
-
+  const { search } = useLocation(); // Get the query parameters from the URL
+  const queryParams = new URLSearchParams(search);
+  const blogId = queryParams.get("id"); // Extract the 'id' parameter from the URL
+  console.log(blogId);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -40,7 +44,9 @@ const AboutBlog = () => {
 
   return (
     <div className="flex flex-col bg-black">
-      <BlogBanner />
+      {/* Pass the blogId to BlogBanner */}
+      <BlogBanner blogId={blogId} />
+
       <div className="flex mt-4">
         <div className="flex flex-col w-2/3 mr-4">
           <div className="pl-4">
@@ -48,18 +54,18 @@ const AboutBlog = () => {
               id="marketing"
               className="opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
             >
-              <BlogBloger 
-                imageUrl="https://gerold.themejunction.net/wp-content/uploads/2024/05/blog-4-1536x597.jpg"
-                buttonText="SAAS"
-                blogDate="September 2, 2024"
-                authorName="John Doe"
+              {/* Pass the blogId to BlogBloger */}
+              <BlogBloger
+                blogId={blogId}
+                buttonText='SAAS'
               />
             </div>
             <div
               id="about"
               className="opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
             >
-              <BlogLeaveReply />
+              {/* Pass the blogId to BlogLeaveReply */}
+              <BlogLeaveReply blogId={blogId} />
             </div>
           </div>
         </div>
@@ -69,13 +75,15 @@ const AboutBlog = () => {
               id="moreServices"
               className="pb-4 opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
             >
-              <BlogRecentPosts />
+              {/* Pass the blogId to BlogRecentPosts */}
+              <BlogRecentPosts blogId={blogId} />
             </div>
             <div
               id="messenger"
               className="opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
             >
-              <BlogPopularTags />
+              {/* Pass the blogId to BlogPopularTags */}
+              <BlogPopularTags blogId={blogId} />
             </div>
           </div>
         </div>
