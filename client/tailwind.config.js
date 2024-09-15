@@ -16,9 +16,16 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' }, 
           '50%': { transform: 'translateY(-5px)' },
         },
+        marquee: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
       },
       animation: {
         bounceArrow: 'bounceArrow 0.6s ease-in-out infinite', 
+      },
+      animation: {
+        marquee: 'marquee 5s linear infinite',
       },
     },
   },

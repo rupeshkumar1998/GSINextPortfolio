@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function ServicePageMarketing() {
+function ServicePageMarketing({ serviceId }) {
+  const [serviceData, setServiceData] = useState({ businessParagraph: '' });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServiceData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/services/${serviceId}`); // Adjust API URL as needed
+        const data = await response.json();
+        setServiceData({
+          businessParagraph: data.businessParagraph,
+        });
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching service data:', error);
+        setLoading(false);
+      }
+    };
+
+    if (serviceId) {
+      fetchServiceData();
+    }
+  }, [serviceId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="text-white flex justify-center items-center ">
       <div className="bg-[#140c1c] rounded-lg shadow-lg p-8  ">
@@ -25,7 +52,7 @@ function ServicePageMarketing() {
                 Business, <div className='italic underline font-normal'>With Us</div>
               </h1>
               <p className="text-lg mb-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis repudiandae eius error, nobis adipisci labore blanditiis minima aspernatur officiis ipsa ab aliquid inventore dicta optio illo quo perferendis deserunt. Ullam, cum exercitationem quia aspernatur eveniet doloremque rem in quaerat soluta ipsa temporibus perferendis maxime dolorum.
+                {serviceData.businessParagraph || 'Loading business description...'}
               </p>
               <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                 Contact Us
@@ -56,7 +83,7 @@ function ServicePageMarketing() {
                 <span className="text-xl font-bold">Deloitte</span>
               </div>
             </div>
-            <div className="  px-4 mb-4">
+            <div className=" px-4 mb-4">
               <div className="bg-gray-900 p-6 rounded shadow flex justify-center items-center transition duration-300 ease-in-out transform hover:scale-105">
                 <span className="text-xl font-bold">Amazon</span>
               </div>

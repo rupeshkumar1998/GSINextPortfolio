@@ -3,10 +3,14 @@ import { FaGithub, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="p-20 flex items-center justify-center" id='contact'>
       <div className="flex flex-col md:flex-row items-center space-y-8 md:space-x-40">
         {/* Contact Form */}
-        <div className="bg-[#2D0F40] text-white rounded-lg p-8 w-4/5 md:w-[600px] lg:w-4/5 shadow-lg">
+        <div className="bg-[#2D0F40] text-white rounded-lg p-8 w-4/5 md:w-[600px] lg:w-4/5 shadow-lg"
+        
+        data-aos="zoom-in-right"
+    data-aos-duration="1000"
+    >
           
           
           <h2 className="textlinearGradient text-4xl font-bold text-center mb-4">
@@ -60,7 +64,10 @@ const Contact = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 text-xl md:text-4xl">
+        <div className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 text-xl md:text-4xl"
+        data-aos="zoom-in-left"
+        data-aos-duration="1000"
+        >
           <a href="https://github.com" className="block bg-gray-700 p-3 rounded-full hover:bg-gray-600 transition duration-300">
             <FaGithub className="text-white" />
           </a>

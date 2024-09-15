@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TiTick } from "react-icons/ti";
 
 const ServiceItem = ({ icon, title, onClick }) => {
   return (
@@ -32,99 +33,39 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [visibleServices, setVisibleServices] = useState(4);
 
-  const defaultServices = [
-    {
-      icon: (
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-          />
-        </svg>
-      ),
-      title: 'Branding Design',
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12h6m-6 3h6m-3-6v6m6-6V4c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4z"
-          />
-        </svg>
-      ),
-      title: 'UI/UX Design',
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-          />
-        </svg>
-      ),
-      title: 'Web Design',
-    },
-    {
-      icon: (
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 20l4-16m4 4l4 4-4 4m-4-4l-4-4"
-          />
-        </svg>
-      ),
-      title: 'App Design',
-    },
-  ];
+  const defaultIcon = (
+    <svg
+      className="w-6 h-6 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+      />
+    </svg>
+  );
 
   useEffect(() => {
     // Fetch services from the backend
     const fetchServices = async () => {
       try {
-        const response = await fetch('https://your-backend-api/services');
+        const response = await fetch('http://localhost:5000/api/services');
         const data = await response.json();
         if (data.length > 0) {
-          setServices(data);
-        } else {
-          setServices(defaultServices);
+          // Only extract titles from the fetched data
+          const titles = data.map(service => ({
+            icon: defaultIcon, // Use default icon or adjust as needed
+            title: service.title,
+          }));
+          setServices(titles);
         }
       } catch (error) {
         console.error('Error fetching services:', error);
-        setServices(defaultServices);
       }
     };
 

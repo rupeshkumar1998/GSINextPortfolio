@@ -19,17 +19,26 @@ import Contact from '../Components/Contact';
 import Footer from '../Components/Footer';
 import MyServices from "../Components/MyServices"
 import ScrollProgress from '../Components/ScrollProgress';
+import Testimonials from '../Components/Testimonials';
+import AwardRecognition from '../Components/AwardRecognition';
 import Blogs from '../Components/Blog';
 const Home = () => {
   return (
     <>
+    {/* <Header/> */}
+    {/* <Awards/> */}
+    {/* <Projects/> */}
+    {/* <Skill/> */}
+    <AwardRecognition/>
+    <MyServices/>
+    <Testimonials/>
+    <Blogs/>
     <Header/>
     <Awards/>
     <Projects/>
+
     <Skill/>
-    <MyServices />
     <Contact/>
-    <Blogs/>
     <Footer/>
     <ScrollProgress/>
     </>

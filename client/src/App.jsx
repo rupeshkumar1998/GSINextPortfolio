@@ -3,15 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import PreLoader from './Components/PreLoader';
-import Blog from './Components/Blog';
-import AllService from './pages/AllService';
-// import BlogBanner from './Components/BlogBanner';
-import BlogBlogger from './Components/BlogBloger';
-import BlogLeaveReply from './Components/BlogLeaveReply';
-import RecentPosts from './Components/RecentPosts';
-import BlogRecentPosts from './Components/BlogRecentPosts';
-import BlogPopularTags from './Components/BlogPopularTags';
-import Blogs from './pages/Blogs';
+
+import Header from './Components/Header';
+import AboutPage from './pages/AboutPage';
+import HashManager from "./Components/HashManager"
+import AwardRecognitionPage from './pages/AwardRecognitionPage';
+import AllService from './pages/AllService'
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+import Blogs from './Components/Blog';
+// import AllService from './pages/AllService';
+
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +23,8 @@ export default function App() {
     setTimeout(() => {
       setLoading(false);
     }, 3000); 
+
+Aos.init();
   }, []);
 
   if (loading) {
@@ -27,17 +32,29 @@ export default function App() {
   }
 
   return (
-    // <BlogBlogger  imageUrl="https://gerold.themejunction.net/wp-content/uploads/2024/05/blog-4-1536x597.jpg"
-    // buttonText="SAAS" blogDate="September 2, 2024" authorName="John Doe"/>
+    <Router>
+      <HashManager/>
+      <Header/>
+      {/* <Home /> */}
+      <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/about" element={<AboutPage/>} />
+      <Route path="/awards" element={<AwardRecognitionPage />} />
 
-    <Blogs/>
+      <Route path="/allServices" element={<AllService/>} />
 
-    // <Router>
-    //   <Routes>
-    //   <Route path="/" element={<Home />} />
-    //   <Route path="/allservices" element={<AllService />} />
-    // </Routes>
-    // </Router>
-
+        {/* <Route path="/projects" element={<Projects />} /> 
+        <Route path="/skills" element={<Skill />} /> 
+        <Route path="/awards" element={<Awards />} />
+        <Route path="/services" element={<MyService />} /> 
+         all page have to added here for rander */}
+      </Routes>
+      {/* <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/allservices" element={<AllService />} />
+    </Routes> */}
+     {/* <Route path="/" element={<Blogs />} /> */}
+     {/* <Route path="/pages/Blogs/" element={<BlogDetails />} /> */}
+    </Router>
   );
 }
