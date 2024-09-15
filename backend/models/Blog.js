@@ -15,6 +15,7 @@ const blogSchema = new mongoose.Schema({
   comments: [commentSchema],
   aboutBlog: String,
   blogImage: String,  // URL for the blog image
+  bannerImage: String,
   aboutBlogger: String,
 });
 
