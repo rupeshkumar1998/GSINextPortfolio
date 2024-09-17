@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import list from '../../Public/List.json'; // Ensure correct path to your list JSON
+
 import CardC from './CardC';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import axios from "axios"
 
 const MndP = () => {
-  // Slick slider settings with responsive breakpoints
+
+
+  const [gsi, setGSI] = useState ([])
+  useEffect(() => {
+    const getGSI = async() => {
+      try {
+        const res = await axios.get("http://localhost:4001/book")
+        console.log(res.data)
+        setGSI(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getGSI();
+  }, []);
+
+
+  
   const settings = {
     className: "center",
     centerMode: true,
@@ -51,8 +69,8 @@ const MndP = () => {
     setSelectedItem(null);
   };
 
-  // Get the latest items from the list
-  const latestItems = list.slice(-6);
+
+  const latestItems = gsi.slice(-8);
 
   useEffect(() => {
     if (selectedItem) {

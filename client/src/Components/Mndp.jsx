@@ -3,12 +3,30 @@ import { IoIosSearch } from "react-icons/io";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import {  FaBackwardStep } from "react-icons/fa6"; // Import FaSearch
 import { useNavigate } from 'react-router-dom'; // Use this only if using React Router
-import list from "../../Public/List.json";
 import Cards from './Cards';
 import { ShootingStars } from '../ui/shooting-stars';
 import { StarsBackground } from '../ui/stars-background';
+import axios from "axios"
 
 const MndP = () => {
+
+
+  const [gsi, setGSI] = useState ([])
+  useEffect(() => {
+    const getGSI = async() => {
+      try {
+        const res = await axios.get("http://localhost:4001/book")
+        console.log(res.data)
+        setGSI(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getGSI();
+  }, []);
+
+
+
   const [selectedItem, setSelectedItem] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("newest"); // State to handle sorting
@@ -28,7 +46,7 @@ const MndP = () => {
   };
 
   // Sorting logic for older to newest or newest to older
-  const sortedList = [...list].sort((a, b) => {
+  const sortedList = [...gsi].sort((a, b) => {
     if (sortOrder === "newest") {
       return new Date(b.Date) - new Date(a.Date); // Newest first
     } else {
