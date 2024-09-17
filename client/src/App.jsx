@@ -48,7 +48,7 @@ Aos.init();
       <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/about" element={<AboutPage/>} />
-      <Route path="/awards" element={<AwardRecognitionPage />} />
+      <Route path="/awards" element={<AwardRecognitionPage/>} />
 
       <Route path="/allServices" element={<AllServicePage/>} />
       <Route path="/news&Blogs" element={<Blogs/>} />

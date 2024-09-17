@@ -1,2 +1,0 @@
-# GSINext
-# Portfolio Project

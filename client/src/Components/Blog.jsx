@@ -48,7 +48,7 @@ const Blogs = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-[#140c1c] p-4">
+    <div className="flex flex-col justify-center items-center h-screen bg-[#140c1c] p-4" id='news&Blogs'>
       <h1 className="text-5xl font-bold bg-gradient-to-r from-[#8750f7] to-[#ffffff] bg-clip-text text-transparent mb-4">
         Recent Blogs
       </h1>
