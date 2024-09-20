@@ -9,6 +9,17 @@ const Blogs = () => {
   const [visibleCount, setVisibleCount] = useState(3); // Initially show 3 blogs
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false); // To handle pop-up visibility
+  const [formData, setFormData] = useState({
+    title: '',
+    bloggerName: '',
+    blogDate: '',
+    aboutBlog: '',
+    blogImage: '',
+    bannerImage: '',
+    aboutBlogger: ''
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,10 +47,49 @@ const Blogs = () => {
   const handleCardClick = (id) => {
     navigate(`/aboutblog?id=${id}`); // Correctly pass the 'id' query parameter
   };
-  
 
   const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 3); // Show 3 more blogs
+    setVisibleCount((prevCount) => prevCount + 3); // Show 3 more blogs
+  };
+
+  const handleAddBlog = () => {
+    setShowModal(true); // Show the pop-up modal
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/blogs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create blog');
+      }
+
+      const newBlog = await response.json();
+      setCards([newBlog, ...cards]); // Add new blog to the beginning of the list
+      setShowModal(false); // Close the modal
+      setFormData({
+        title: '',
+        bloggerName: '',
+        blogDate: '',
+        aboutBlog: '',
+        blogImage: '',
+        bannerImage: '',
+        aboutBlogger: ''
+      });
+    } catch (err) {
+      console.error('Error creating blog:', err);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -53,13 +103,13 @@ const Blogs = () => {
       <p className="text-white text-center w-[70%] mb-8">
         Stay updated with our latest articles and insights.
       </p>
-      <div 
+      <div
         className="flex justify-center w-full gap-8 flex-wrap"
         style={{ maxHeight: '60vh', overflowY: 'auto' }}  // Add scrollbar styling here
       >
         {cards.slice(0, visibleCount).map((card) => (
-          <div 
-            className="w-[80vw] h-[80vw] md:w-[40vh] md:h-[40vh]" 
+          <div
+            className="w-[80vw] h-[80vw] md:w-[40vh] md:h-[40vh]"
             key={card.id}  // Use card.id as key
             data-aos="fade-up"
             onClick={() => handleCardClick(card._id)}  // Pass the blog id
@@ -72,13 +122,102 @@ const Blogs = () => {
           </div>
         ))}
       </div>
-      {visibleCount < cards.length && (
+      <div className="flex mt-8">
+        {visibleCount < cards.length && (
+          <button
+            onClick={handleShowMore}
+            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 mr-4"
+          >
+            Show More
+          </button>
+        )}
         <button
-          onClick={handleShowMore}
-          className="mt-8 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
+          onClick={handleAddBlog}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
         >
-          Show More
+          Add Blog
         </button>
+      </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg w-[90%] md:w-[50%]">
+            <h2 className="text-2xl mb-4">Create New Blog</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                placeholder="Title"
+                required
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <input
+                type="text"
+                name="bloggerName"
+                value={formData.bloggerName}
+                onChange={handleChange}
+                placeholder="Blogger Name"
+                required
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <input
+                type="date"
+                name="blogDate"
+                value={formData.blogDate}
+                onChange={handleChange}
+                required
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <textarea
+                name="aboutBlog"
+                value={formData.aboutBlog}
+                onChange={handleChange}
+                placeholder="About Blog"
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <input
+                type="text"
+                name="blogImage"
+                value={formData.blogImage}
+                onChange={handleChange}
+                placeholder="Blog Image URL"
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <input
+                type="text"
+                name="bannerImage"
+                value={formData.bannerImage}
+                onChange={handleChange}
+                placeholder="Banner Image URL"
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <textarea
+                name="aboutBlogger"
+                value={formData.aboutBlogger}
+                onChange={handleChange}
+                placeholder="About Blogger"
+                className="mb-4 p-2 border rounded w-full"
+              />
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  className="mr-4 px-4 py-2 bg-gray-300 text-black rounded-lg"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                >
+                  Create Blog
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );
